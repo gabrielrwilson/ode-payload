@@ -181,10 +181,12 @@ int main(int argc, char *argv[])
    state->proc = PROC_init("payload", WD_ENABLED);
    DBG_setLevel(DBG_LEVEL_ALL);
 
-   // Initialize GPIOs
+  -------------------------------- // Initialize GPIOs
    state->deploy_ball1 = create_named_gpio_device("DEPLOY_BALL1");
    state->led1 = create_named_gpio_device("LED1");
 
+   
+   ---------------------------
    // Add a signal handler call back for SIGINT signal
    PROC_signal(state->proc, SIGINT, &sigint_handler, PROC_evt(state->proc));
 
