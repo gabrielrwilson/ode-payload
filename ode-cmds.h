@@ -11,6 +11,10 @@ struct ODEStatus {
    uint8_t sw_1;
    uint8_t sw_2;
    uint8_t sw_3;
+   uint8_t LED_505L
+   uint8_t LED_645L
+   uint8_t LED_851L
+   uint8_t LED_CREE
 } __attribute__((packed));
 
 struct ODEBlinkData {
@@ -19,7 +23,10 @@ struct ODEBlinkData {
 } __attribute__((packed));
 
 struct ODEDeployData {
-   uint32_t duration;
+   uint32_t Door_duration;
+   uint32_t Nitonal_duration
 } __attribute__((packed));
+
+
 
 #endif
