@@ -27,8 +27,15 @@
 struct MulticallInfo;
 
 static int ode_status(int, char**, struct MulticallInfo *);
-static int ode_led1(int, char**, struct MulticallInfo *);
+static int ode_led_505L(int, char**, struct MulticallInfo *);
+static int ode_led_645L(int, char**, struct MulticallInfo *);
+static int ode_led_851L(int, char**, struct MulticallInfo *);
 static int ode_ball1(int, char**, struct MulticallInfo *);
+static int ode_ball2(int, char**, struct MulticallInfo *);
+static int ode_door(int, char**, struct MulticallInfo *);
+static int ode_door_query(int, char**, struct MulticallInfo *);
+static int ode_ball1_query(int, char**, struct MulticallInfo *);
+static int ode_ball2_query(int, char**, struct MulticallInfo *);
 
 // struct holding all possible function calls
 // running the executable with the - flags will call that function
@@ -41,8 +48,16 @@ struct MulticallInfo {
 } multicall[] = {
    { &ode_status, "ode-status", "-S", 
        "Display the current status of the ode-payload process" }, 
-   { &ode_led1, "ode-led1", "-L1", "Blink LED1" }, 
+   { &ode_led_505L, "ode-505L", "-L1", "Blink 505L" }, 
+   { &ode_led_645L, "ode-645L", "-L2", "Blink 645L" }, 
+   { &ode_led_851L, "ode-851L", "-L3", "Blink 851L" }, 
+   { &ode_led_CREE, "ode-CREE", "-L4", "Blink CREE" }, 
    { &ode_ball1, "ode-ball1", "-B1", "Deploy ball 1" }, 
+   { &ode_ball2, "ode-ball2", "-B2", "Deploy ball 2" }, 
+   { &ode_door, "ode-door", "-D", "Open door" }, 
+   { &ode_door_FB, "ode-doorFB", "-FB1", "Query door Feedback" }, 
+   { &ode_door, "ode-ball1FB", "-FB2", "Query ball 1 Feedback" }, 
+   { &ode_door, "ode-ball2FB", "-FB3", "Query ball 2 Feedback" }, 
    { NULL, NULL, NULL, NULL }
 };
 
@@ -90,7 +105,7 @@ static int ode_ball1(int argc, char **argv, struct MulticallInfo * self)
    return 0;
 }
 
-static int ode_led1(int argc, char **argv, struct MulticallInfo * self) 
+static int ode_led_505L(int argc, char **argv, struct MulticallInfo * self) 
 {
    // struct to hold response from payload process
    struct {
