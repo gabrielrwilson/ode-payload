@@ -30,12 +30,13 @@ static int ode_status(int, char**, struct MulticallInfo *);
 static int ode_led_505L(int, char**, struct MulticallInfo *);
 static int ode_led_645L(int, char**, struct MulticallInfo *);
 static int ode_led_851L(int, char**, struct MulticallInfo *);
-static int ode_ball1(int, char**, struct MulticallInfo *);
-static int ode_ball2(int, char**, struct MulticallInfo *);
-static int ode_door(int, char**, struct MulticallInfo *);
-static int ode_door_query(int, char**, struct MulticallInfo *);
-static int ode_ball1_query(int, char**, struct MulticallInfo *);
-static int ode_ball2_query(int, char**, struct MulticallInfo *);
+static int ode_sm_ball(int, char**, struct MulticallInfo *);
+static int ode_lg_ball(int, char**, struct MulticallInfo *);
+static int ode_mw(int, char**, struct MulticallInfo *);
+static int ode_mw_fb(int, char**, struct MulticallInfo *);
+static int ode_sm_ball_fb(int, char**, struct MulticallInfo *);
+static int ode_lg_ball_fb(int, char**, struct MulticallInfo *);
+static int ode_led_irfb (int, char**, struct MulticallInfo *);
 
 // struct holding all possible function calls
 // running the executable with the - flags will call that function
@@ -52,12 +53,13 @@ struct MulticallInfo {
    { &ode_led_645L, "ode-645L", "-L2", "Blink 645L" }, 
    { &ode_led_851L, "ode-851L", "-L3", "Blink 851L" }, 
    { &ode_led_CREE, "ode-CREE", "-L4", "Blink CREE" }, 
-   { &ode_ball1, "ode-ball1", "-B1", "Deploy ball 1" }, 
-   { &ode_ball2, "ode-ball2", "-B2", "Deploy ball 2" }, 
-   { &ode_door, "ode-door", "-D", "Open door" }, 
-   { &ode_door_FB, "ode-doorFB", "-FB1", "Query door Feedback" }, 
-   { &ode_door, "ode-ball1FB", "-FB2", "Query ball 1 Feedback" }, 
-   { &ode_door, "ode-ball2FB", "-FB3", "Query ball 2 Feedback" }, 
+   { &ode_sm_ball, "ode-ball1", "-B1", "Deploy small ball" }, 
+   { &ode_lg_ball, "ode-ball2", "-B2", "Deploy large ball" }, 
+   { &ode_mw, "ode-door", "-mw", "Open door" }, 
+   { &ode_mw_fb, "ode-doorFB", "-FB1", "Query door Feedback" }, 
+   { &ode_sm_ball_fb, "ode-ball1FB", "-FB2", "Query small ball Feedback" }, 
+   { &ode_lg_ball_fb, "ode-ball2FB", "-FB3", "Query large ball Feedback" }, 
+   { &ode_led_irfb, "ode-ball2FB", "-L5", "Enable the feedback IR source" }, 
    { NULL, NULL, NULL, NULL }
 };
 
