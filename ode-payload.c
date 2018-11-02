@@ -266,8 +266,7 @@ static int start_feedback_led(void *arg)
 
 static int read_feedback(uint8_t feedback_gpio)
 {
-	->set(state->LED_IRFB, 1);
-	bool READ_VALUE = state->feedback_gpio;	
+  	bool READ_VALUE->LED_IRFB->read(state->LED_IRFB);
 	return READ_VALUE;
 }
 
